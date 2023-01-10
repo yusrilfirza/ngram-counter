@@ -26,12 +26,13 @@ def findNGram(corpus, cover, result = {}, maxCount = {}):
         while index + n <= len(arrayCorpus):
             nGramCorpus = arrayCorpus[index:index+n]
             if (' '.join(nGramCover) == ' '.join(nGramCorpus)):
-                nGram = str(n) + ' gram'
-                try:
-                    result[' '.join(nGramCorpus)]['freq'] += 1
-                    result[' '.join(nGramCorpus)]['percent'] = (result[' '.join(nGramCorpus)]['freq']/maxCount[nGram]) * 100
-                except KeyError:
-                    result[' '.join(nGramCorpus)] = { 'freq': 1, 'percent': (1/maxCount[nGram]) * 100}
+                if ('financial' in ' '.join(nGramCover)):
+                    nGram = str(n) + ' gram'
+                    try:
+                        result[' '.join(nGramCorpus)]['freq'] += 1
+                        result[' '.join(nGramCorpus)]['percent'] = (result[' '.join(nGramCorpus)]['freq']/maxCount[nGram]) * 100
+                    except KeyError:
+                        result[' '.join(nGramCorpus)] = { 'freq': 1, 'percent': (1/maxCount[nGram]) * 100}
             index += 1
         if (start + n == len(arrayCover)):
             start = 0
