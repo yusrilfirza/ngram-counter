@@ -26,7 +26,7 @@ def findNGram(corpus, cover, result = {}, maxCount = {}):
         while index + n <= len(arrayCorpus):
             nGramCorpus = arrayCorpus[index:index+n]
             if (' '.join(nGramCover) == ' '.join(nGramCorpus)):
-                if ('achieve' in ' '.join(nGramCover)):
+                if ('worry' in ' '.join(nGramCover)):
                     nGram = str(n) + ' gram'
                     try:
                         result[' '.join(nGramCorpus)]['freq'] += 1
