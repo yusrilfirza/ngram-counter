@@ -2,6 +2,8 @@
 import argparse
 import numpy as np
 import re
+import pandas as pd
+import dataframe_image as dfi
 import json
 
 def parseFile(filename, variable):
@@ -81,5 +83,6 @@ if __name__ == "__main__":
                 count = findNGram(corp.split(), sentence.split(), count, maxCount)
         with open(args.out_file + '.json', 'w') as output:
             json.dump(count, output)
-
-        print(count)
+        df = pd.DataFrame(count.items(), columns=["n gram", "frequency"]) 
+        dfi.export(df, 'n_gram_table.png', max_rows=-1)
+        print(df)
